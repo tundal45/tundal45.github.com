@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html> 
+  <head>
+    <meta charset="utf-8">
+    
+    <title>tundal45@github:~</title>
+    <meta name="description" content="Ashish Dixit documenting his journey as a software developer">
+    <meta name="keywords" content="tundal45 Ashish Dixit programming craftsmanship learning ruby rails sinatra web">
+    <meta name="author" content="Ashish Dixit">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" />
+    
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Raleway:100"> <!--Neucha | IM+Fell+DW+Pica+SC-->
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <!--a href="/" id="gravatar">
+          <img src="http://www.gravatar.com/avatar/e0a36a8c6ed7935cf1ccd1982bf4e53c.png">
+        </a-->
+        <div id="banner"><a href="/">tundal45@github:~</a></div>
+        <div id="nav">
+          <ul>
+            <li>
+              <a href="https://github.com/tundal45">
+                <img src="github.png" alt="github" title="@tundal45 on GitHub">
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/#!/tundal45">
+                <img src="twitter.png" alt="twitter" title="@tundal45 on Twitter">
+              </a>
+            </li>
+            <li>
+              <a href="http://tundal45.tumblr.com/">
+                <img src="tumblr.png" alt="tumblr" title="@tundal45 on Tumblr">
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="rss.png" alt="rss" title="Subscribe to my blog feed">
+              </a>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <div id="main" role="main">
+        <h2>Oracle External Table woes</h2>
+
+<p>The issue, which I have been working on for a while, is that when I run a query that creates an external table in Oracle, it works swimmingly. However, when I ran the same query using a Perl script, I was receiving the following error:</p>
+
+<pre>KUP-01005: syntax error found "identifier": expecting one of: "number, plussign"</pre>
+
+
+<p>I printed the query to the screen as well as to a file and it would look exactly the same as the query that worked when manually executed using PL/SQL. However, I realized, by accident of course, that if I change the ":" to a "-" in the ACCESS PARAMETERS where I provide range for columns (I am working with a fixed width file), it magically works.</p>
+
+<p>Here is an Example:</p>
+
+<p><em>QUERY THAT DOES NOT WORK IN PERL:</em></p>
+
+<div class="highlight"><pre><code class="sql"><span class="c1">--Query that does not work in Perl</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">ex</span><span class="p">.</span><span class="n">emp</span>
+<span class="p">(</span>
+  <span class="n">emp_no</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+  <span class="n">emp_title</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+  <span class="n">emp_name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+  <span class="n">emp_address</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">ORGANIZATION</span> <span class="k">external</span>
+<span class="p">(</span>
+  <span class="k">TYPE</span> <span class="n">oracle_loader</span>
+  <span class="k">DEFAULT</span> <span class="n">DIRECTORY</span> <span class="n">empdata</span>
+  <span class="k">ACCESS</span> <span class="k">PARAMETERS</span>
+  <span class="p">(</span>
+      <span class="n">RECORDS</span> <span class="n">DELIMITED</span> <span class="k">BY</span> <span class="mi">0</span><span class="n">X</span><span class="err">\</span><span class="s1">&#39;0A\&#39;</span>
+      <span class="n">READSIZE</span> <span class="mi">1048576</span>
+      <span class="n">FIELDS</span> <span class="n">LRTRIM</span>
+      <span class="n">MISSING</span> <span class="n">FIELD</span> <span class="k">VALUES</span> <span class="k">ARE</span> <span class="k">NULL</span>
+      <span class="n">REJECT</span> <span class="k">ROWS</span> <span class="k">WITH</span> <span class="k">ALL</span> <span class="k">NULL</span> <span class="n">FIELDS</span>
+      <span class="p">(</span>
+        <span class="n">emp_no</span> <span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">)</span>
+        <span class="n">emp_title</span> <span class="nb">varchar</span> <span class="p">(</span><span class="mi">6</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span>
+        <span class="n">emp_name</span> <span class="nb">varchar</span> <span class="p">(</span><span class="mi">21</span><span class="p">:</span><span class="mi">51</span><span class="p">)</span>
+        <span class="n">emp_address</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">52</span><span class="p">:</span><span class="mi">92</span><span class="p">)</span>
+      <span class="p">)</span>
+  <span class="p">)</span> <span class="k">location</span><span class="p">(</span><span class="s1">&#39;emp_info.txt&#39;</span><span class="p">)</span>
+<span class="p">)</span><span class="n">REJECT</span> <span class="k">LIMIT</span> <span class="n">UNLIMITED</span><span class="p">;</span>
+</code></pre>
+</div>
+
+
+
+
+<div class="highlight"><pre><code class="sql"><span class="c1">--Query that works in Perl</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">ex</span><span class="p">.</span><span class="n">emp</span>
+<span class="p">(</span>
+  <span class="n">emp_no</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+  <span class="n">emp_title</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+  <span class="n">emp_name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+  <span class="n">emp_address</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">ORGANIZATION</span> <span class="k">external</span>
+<span class="p">(</span>
+  <span class="k">TYPE</span> <span class="n">oracle_loader</span>
+  <span class="k">DEFAULT</span> <span class="n">DIRECTORY</span> <span class="n">empdata</span>
+  <span class="k">ACCESS</span> <span class="k">PARAMETERS</span>
+  <span class="p">(</span>
+      <span class="n">RECORDS</span> <span class="n">DELIMITED</span> <span class="k">BY</span> <span class="mi">0</span><span class="n">X</span><span class="err">\</span><span class="s1">&#39;0A\&#39;</span>
+      <span class="n">READSIZE</span> <span class="mi">1048576</span>
+      <span class="n">FIELDS</span> <span class="n">LRTRIM</span>
+      <span class="n">MISSING</span> <span class="n">FIELD</span> <span class="k">VALUES</span> <span class="k">ARE</span> <span class="k">NULL</span>
+      <span class="n">REJECT</span> <span class="k">ROWS</span> <span class="k">WITH</span> <span class="k">ALL</span> <span class="k">NULL</span> <span class="n">FIELDS</span>
+      <span class="p">(</span>
+        <span class="n">emp_no</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>
+        <span class="n">emp_title</span> <span class="nb">varchar</span> <span class="p">(</span><span class="mi">6</span><span class="o">-</span><span class="mi">20</span><span class="p">)</span>
+        <span class="n">emp_name</span> <span class="nb">varchar</span> <span class="p">(</span><span class="mi">21</span><span class="o">-</span><span class="mi">51</span><span class="p">)</span>
+        <span class="n">emp_address</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">52</span><span class="o">-</span><span class="mi">92</span><span class="p">)</span>
+      <span class="p">)</span>
+  <span class="p">)</span> <span class="k">location</span><span class="p">(</span><span class="s1">&#39;emp_info.txt&#39;</span><span class="p">)</span>
+<span class="p">)</span><span class="n">REJECT</span> <span class="k">LIMIT</span> <span class="n">UNLIMITED</span><span class="p">;</span>
+</code></pre>
+</div>
+
+
+<p>I basically spent two days a while back on a similar issue for another script a while back and half a day today before I found this solution. However, its one of those very dissatisfying resolution because you feel what you were doing SHOULD WORK. If anyone has a satisfying answer to why this makes sense, I would love to hear it. As for now, the only satisfaction I can get out of this situation is that it will help me keep moving forward with this script as well as the script I stopped working on couple of months back because of this error.</p>
+
+
+      </div>
+      <footer>
+      
+      </footer>
+    </div>
+  </body>
+</html>

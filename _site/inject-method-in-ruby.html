@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html> 
+  <head>
+    <meta charset="utf-8">
+    
+    <title>tundal45@github:~</title>
+    <meta name="description" content="Ashish Dixit documenting his journey as a software developer">
+    <meta name="keywords" content="tundal45 Ashish Dixit programming craftsmanship learning ruby rails sinatra web">
+    <meta name="author" content="Ashish Dixit">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" />
+    
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Raleway:100"> <!--Neucha | IM+Fell+DW+Pica+SC-->
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <!--a href="/" id="gravatar">
+          <img src="http://www.gravatar.com/avatar/e0a36a8c6ed7935cf1ccd1982bf4e53c.png">
+        </a-->
+        <div id="banner"><a href="/">tundal45@github:~</a></div>
+        <div id="nav">
+          <ul>
+            <li>
+              <a href="https://github.com/tundal45">
+                <img src="github.png" alt="github" title="@tundal45 on GitHub">
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/#!/tundal45">
+                <img src="twitter.png" alt="twitter" title="@tundal45 on Twitter">
+              </a>
+            </li>
+            <li>
+              <a href="http://tundal45.tumblr.com/">
+                <img src="tumblr.png" alt="tumblr" title="@tundal45 on Tumblr">
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="rss.png" alt="rss" title="Subscribe to my blog feed">
+              </a>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <div id="main" role="main">
+        <h2>Enumerable#inject in Ruby</h2>
+
+<p>Continuing the trend of <a href="http://tundal45.tumblr.com/post/2908449079/include-vs-extend-in-ruby">documenting the questions</a> that come up while I start catching up with <a href="http://letter.ly/practicing-ruby">Practicing Ruby</a>, I thought a post on <a href="http://rdoc.info/stdlib/core/1.9.2/Enumerable#inject-instance_method"><code>Enumerable#inject</code></a> was in order. While I could go and try to explain the inject method myself, I think I would be better off letting <a href="http://jayfields.com/">Jay Fields</a> take charge because he wrote a really great <a href="http://blog.jayfields.com/2008/03/ruby-inject.html">post</a> about it.</p>
+
+<p>I have always been confused yet intrigued by <code>inject</code> but Jay's post definitely clarified a lot of things for me. The key takeaway for me from his post was that while there are other ways through method chaining that you can accomplish some of the object construction tasks, where <code>inject</code> shines is in its simplicity to allow additional operations on the elements being iterated over during object construction. While chaining is a little more concise, I personally found the examples using <code>inject</code> to be more readable.</p>
+
+<!--script src="https://gist.github.com/793208.js?file=inject.rb"></script-->
+
+
+
+
+<div class="highlight"><pre><code class="ruby"><span class="n">places</span> <span class="o">=</span> <span class="sx">%w( Reno Chicago Fargo Minnesota Buffalo Toronto Winslow Sarasota </span>
+<span class="sx">             Wichita Tulsa Ottawa Oklahoma Tampa Panama Mattawa La Paloma </span>
+<span class="sx">             Bangor Baltimore Salvador Amarillo Tocapillo Baranquilla and </span>
+<span class="sx">             Perdilla)</span>
+         
+<span class="nb">puts</span> <span class="n">places</span><span class="o">.</span><span class="n">inject</span><span class="p">(</span><span class="s2">&quot;I&#39;ve been to: &quot;</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">result</span><span class="p">,</span> <span class="n">place</span><span class="o">|</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">result</span><span class="si">}#{</span><span class="n">place</span><span class="si">}</span><span class="s2">, &quot;</span> <span class="p">}</span> <span class="o">+</span> <span class="s2">&quot;I&#39;m a killer&quot;</span>
+</code></pre>
+</div>
+
+
+<p>Since Jay mentioned object construction, I figured a string example would give a better picture of how the argument passed to inject is only used in the first iteration of the block whereas the second argument contains the element from the <code>places</code> array for that current iteration.</p>
+
+<p>Once again, if I am wrong about something or unclear in the post, please feel free to point that out in the comments section. My goal with positng things that I am reading about is to document what I am learning and crystallize the ideas in my head by trying to come up with some code examples. I also strongly urge you to sign up for the <a href="http://letter.ly/practicing-ruby">Practicing Ruby</a> so that you can be treated to ruby awesomeness twice a week for only $8 a month and support <a href="http://university.rubymendicant.com">Ruby Mendicant University</a> in the process.</p>
+
+<p><strong>UPDATE:</strong> As per the feedback from Matt Yoho below, I have updated the gist to use string interpolation instead of string concatenation using the <code>+</code> operator to avoid the case where Ruby creates a whole bunch of strings. Gregory Brown also mentioned that using inject with Strings is dangerous for performance reasons. Both Matt &amp; Greg voiced concerns about how inject can sometimes be overused.</p>
+
+<p>I want to <em>emphasize</em> the fact that the posts here are part of my learning process and therefore should be taken with a grain of salt. I will be making a lot of mistakes and the reason I am posting them here is so that I can get feedback from people, like I did in this case, who know better and learn/improve from that interaction.</p>
+
+<p><strong>UPDATE # 2:</strong> Since writing this post, Greg has made a tough decision and <strong>the <a href="http://letter.ly/practicing-ruby">practicing ruby newsletter</a> is going to be discontinued</strong> in the coming weeks. Therefore, I suggest that you <strong>only subscribe if you are interested in receiving the back issues and/or supporting RMU</strong>. I also would like to remind you that if you wish to support RMU, there is a <a href="http://pledgie.com/campaigns/13580">pledgie</a> set up and you can help ensure that RMU continues to run sustainably by donating however much you can. Thank you for your support.</p>
+
+
+      </div>
+      <footer>
+      
+      </footer>
+    </div>
+  </body>
+</html>

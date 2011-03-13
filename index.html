@@ -1,0 +1,16 @@
+---
+layout: default
+title: Home
+---
+
+<div class="index-posts">
+  {% for post in site.posts limit: 10 %}
+    <!--p><a href="{{ post.url }}">{{ post.title }}</a> | {{ post.date | date_to_string }}</p-->
+    <ul>
+      <li>
+        <a href="{{site.baseurl}}{{post.url}}">{{ post.title }}</a>
+        <span>{{ post.date | date: "%B %d, %Y" }}</span>
+      </li>
+    </ul>
+  {% endfor %}
+</div>
