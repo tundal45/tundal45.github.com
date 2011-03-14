@@ -2,4 +2,4 @@
 permalink: /:title.html
 markdown: rdiscount
 pygments: true
-baseurl: http://tundal45.github.com/
+baseurl: http://tundal45.github.com
