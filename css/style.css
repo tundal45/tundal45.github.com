@@ -127,9 +127,28 @@ header a {
   font-size: 80%;
 }
 
+.archive-posts ul {
+  list-style: none;
+  padding-left: 0px;
+  margin-left: 0px;  
+}
+
+.archive-posts ul {
+  line-height: 1em;
+}
+
+.archive-posts li span {
+  float: right;
+  font-size: 80%;
+}
+
 /*
   Syntax Highlighting using Pygments
 */
+
+pre, code {
+  font: 1em / 1.3em 'Lucida Console', 'courier new', monospace;
+}
 
 pre {
   background: #000;
@@ -146,8 +165,7 @@ pre {
   border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
-  color: white;
-  font: 1em / 1.3em 'Lucida Console', 'courier new', monospace;
+  color: white;  
 }
 
 pre code { font: 1em / 1.3em 'Lucida Console', 'courier new', monospace }

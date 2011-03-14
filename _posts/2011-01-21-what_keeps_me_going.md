@@ -3,7 +3,7 @@ layout: post
 title: What keeps me going
 ---
 
-I recently gave an example of why I think [my parents did a good job of raising me](http://tundal45.tumblr.com/post/2825458031/choice-consequences-parents). However, their impact on my life goes well beyond that. What I am today and where I am today is because of the sacrifices that they have made and for that I am forever thankful.
+I recently gave an example of why I think [my parents did a good job of raising me]({{site.baseurl}}/on-choices-and-consequences.html). However, their impact on my life goes well beyond that. What I am today and where I am today is because of the sacrifices that they have made and for that I am forever thankful.
 
 I grew up like any normal kid with obsession with cartoons, action figures ([He-Man](http://en.wikipedia.org/wiki/He-Man) was pretty big back then in Nepal) and playing with the neighborhood kids. Despite having a modest income, my parents always made sure that me and my brother got what we wanted as long as it was reasonable. We weren't always reasonable so having that restriction taught us that when you can't have everything you want, you learn to focus on what you need - an important lesson that has helped me a lot throughout my life.
 
