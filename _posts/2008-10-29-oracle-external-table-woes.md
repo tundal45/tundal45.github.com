@@ -1,13 +1,23 @@
 ---
 layout: post
-title: Oracle External Table woes
+title: Oracle External Table woes | tundal45@github:~
+short_title: Oracle External Table woes
+date: 2008-10-29 11:12:46
 ---
 
-The issue, which I have been working on for a while, is that when I run a query that creates an external table in Oracle, it works swimmingly. However, when I ran the same query using a Perl script, I was receiving the following error:
+The issue, which I have been working on for a while, is that when I run
+a query that creates an external table in Oracle, it works swimmingly.
+However, when I ran the same query using a Perl script, I was receiving
+the following error:
 
-<pre>KUP-01005: syntax error found "identifier": expecting one of: "number, plussign"</pre>
+<pre>KUP-01005: syntax error found "identifier": expecting one of:
+"number, plussign"</pre>
 
-I printed the query to the screen as well as to a file and it would look exactly the same as the query that worked when manually executed using PL/SQL. However, I realized, by accident of course, that if I change the ":" to a "-" in the ACCESS PARAMETERS where I provide range for columns (I am working with a fixed width file), it magically works.
+I printed the query to the screen as well as to a file and it would look
+exactly the same as the query that worked when manually executed using
+PL/SQL. However, I realized, by accident of course, that if I change the
+":" to a "-" in the ACCESS PARAMETERS where I provide range for columns
+(I am working with a fixed width file), it magically works.
 
 Here is an Example:
 
@@ -79,4 +89,11 @@ ORGANIZATION external
 
 {% endhighlight %}
 
-I basically spent two days a while back on a similar issue for another script a while back and half a day today before I found this solution. However, its one of those very dissatisfying resolution because you feel what you were doing SHOULD WORK. If anyone has a satisfying answer to why this makes sense, I would love to hear it. As for now, the only satisfaction I can get out of this situation is that it will help me keep moving forward with this script as well as the script I stopped working on couple of months back because of this error.
+I basically spent two days a while back on a similar issue for another
+script a while back and half a day today before I found this solution.
+However, its one of those very dissatisfying resolution because you feel
+what you were doing SHOULD WORK. If anyone has a satisfying answer to
+why this makes sense, I would love to hear it. As for now, the only
+satisfaction I can get out of this situation is that it will help me
+keep moving forward with this script as well as the script I stopped
+working on couple of months back because of this error.

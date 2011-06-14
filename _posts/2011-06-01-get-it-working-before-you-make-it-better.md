@@ -1,6 +1,8 @@
 ---
 layout: post
-title: Get it working before you make it better
+title: Get it working before you make it better | tundal45@github:~
+short_title: Get it working before you make it better
+date: 2011-06-01 6:42:23
 ---
 
 Post commit hook was one of the things that I had heard about before but

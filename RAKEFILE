@@ -1,0 +1,30 @@
+# RAKEFILE inspired by https://github.com/levent/levent.github.com
+require 'date'
+
+
+desc 'create a new draft post (TITLE required)'
+task :post do
+  raise "TITLE required" unless ENV['TITLE']
+  title = ENV['TITLE']
+  slug = "#{Date.today}-#{title.downcase.gsub(/[^\w]+/, '-')}"
+
+  file = File.join(
+    File.dirname(__FILE__),
+    '_posts',
+    slug + '.md'
+  )
+
+  File.open(file, "w") do |f|
+    f << <<-EOS.gsub(/^    /, '')
+    ---
+    layout: post
+    title: #{title} | tundal45@github:~
+    short_title: #{title}
+    date: #{Time.now.strftime("%Y-%m-%d %T")}
+    ---
+
+    EOS
+  end
+
+  system ("#{ENV['EDITOR']} #{file}")
+end

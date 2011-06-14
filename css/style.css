@@ -13,9 +13,9 @@ h1 {
   line-height: 1.1em;
   color: gray; 
 }
-    
+
 h2 { font-size:150% }
-    
+
 .post h2 {
   font-size:110%;
   line-height: 1.5em; 
@@ -89,21 +89,25 @@ header a {
   margin-bottom: 1em;
 }
 
-#nav {
-  width: 200px;
+#nav, footer {
+  width: 220px;
   margin: auto;
 }
 
-#nav ul {
+#nav ul, footer ul {
   list-style: none;
 }
 
-#nav li {
+#nav li, footer li {
   display: inline;
 }
 
-#nav li a {
+#nav li a, footer li a {
   background: white
+}
+
+footer {
+  font-size: 120%
 }
 
 .index-posts a {

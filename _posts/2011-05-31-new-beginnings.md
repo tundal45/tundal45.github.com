@@ -1,6 +1,8 @@
 ---
 layout: post
-title: New Beginnings
+title: New Beginnings | tundal45@github:~
+short_title: New Beginnings
+date: 2011-05-31 10:14:22
 ---
 
 It's been two weeks since I started my new job as a Software Engineer at

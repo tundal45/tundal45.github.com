@@ -1,15 +1,17 @@
 ---
 layout: post
-title: Pair Programming FTMFW
+title: Pair Programming FTMFW | tundal45@github:~
+short_title: Pair Programming FTMFW
+date: 2011-06-02 6:22:39
 ---
 
 It's hardly the first time that I have talked about
-[pair](http://tundal45.github.com/remote-pair-programming-to-learn.html)
+[pair]({{site.baseurl}}/remote-pair-programming-to-learn.html)
 [programming](
-http://tundal45.github.com/remote-pair-programming-with-pat-maddox.html) and
+{{site.baseurl}}/remote-pair-programming-with-pat-maddox.html) and
 [it's](
-http://tundal45.github.com/stand-remotely-on-the-shoulder-of-giants.html)
-[benefits](http://tundal45.github.com/new-beginnings.html) but in case
+{{site.baseurl}}/stand-remotely-on-the-shoulder-of-giants.html)
+[benefits]({{site.baseurl}}/new-beginnings.html) but in case
 you have not noticed, I LOVE IT! I've been trying to reflect on the
 workday and to force myself to do that, especially as I am starting to
 work more with ruby, rails, jQuery & other technologies in the web
@@ -26,7 +28,7 @@ that I had worked on before so that definitely helped my confidence a
 little bit. Being new to jQuery, my contributions were limited to "how
 about we try this" but it was still a fun experience. Staying true to
 what I had [learned
-yesterday](http://tundal45.github.com/get-it-working-before-you-make-it-better.html),
+yesterday]({{site.baseurl}}/get-it-working-before-you-make-it-better.html),
 Jeff & I got the functionality in first and we were able to then
 realized that we can make the code cleaner.
 

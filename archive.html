@@ -6,11 +6,20 @@ title: Archive
 
 <div class="archive-posts">
   <ul>
-    {% for post in site.posts offset: 10 %}
+    {% for post in site.posts offset: 15 %}
       <li>
         <span>{{ post.date | date: "%B %d, %Y" }}</span>
-        <a href="{{ post.url }}">{{ post.title }}</a>
+        <a href="{{ post.url }}">{{ post.short_title }}</a>
       </li>
     {% endfor %}
   </ul>
 </div>
+
+
+<footer>
+  <ul>
+    <li>
+      <a href="index.html">&lt;~ Recent Ramblings</a>
+    </li>
+  </ul>
+</footer>
