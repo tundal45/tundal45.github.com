@@ -4,7 +4,15 @@ layout: default
 
 <h2>{{ page.short_title }}</h2>
 
+<div class="in-post-nav">
+  <~ {{ paginator.previous_page }}
+</div>
+
 {{ content }}
+
+<div class="in-post-nav">
+  <~ {{ paginator.next_page }}
+</div>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">
