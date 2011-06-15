@@ -77,7 +77,7 @@ Valentin](http://twitter.com/#!/arielvalentin) can vouch for me on this
 one), the support from the people was a great energizer. However, it was
 not until my conversation with Evan after
 [hacking](https://github.com/elight/rubyquiz14) on [Ruby Quiz
-#14](http://www.rubyquiz.com/quiz14.html) that I realized what I had
+14](http://www.rubyquiz.com/quiz14.html) that I realized what I had
 stumbled upon was not limited to just me or the ruby community. Remote
 pair programming was not just agnostic to geographic location but also
 to the language you are trying to learn or the experience levels of the

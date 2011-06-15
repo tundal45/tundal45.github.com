@@ -2,16 +2,22 @@
 layout: default
 ---
 
-<h2>{{ page.short_title }}</h2>
-
 <div class="in-post-nav">
-  <~ {{ paginator.previous_page }}
+  {% if page.previous.url %}
+    <a class="left" href="{{page.previous.url}}" title="Previous Post:
+      {{page.previous.short_title}}">&laquo; {{page.previous.short_title}}</a>
+  {% endif %}
 </div>
+
+<h2 id="post-title">{{ page.short_title }}</h2>
 
 {{ content }}
 
 <div class="in-post-nav">
-  <~ {{ paginator.next_page }}
+  {% if page.next.url %}
+    <a class="right" href="{{page.next.url}}" title="Next Post:
+      {{page.next.short_title}}">{{ page.next.short_title }} &raquo;</a>
+  {% endif %}
 </div>
 
 <div id="disqus_thread"></div>
